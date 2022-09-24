@@ -1,0 +1,9 @@
+sudo: required #require super user
+services:
+  - docker #require a copy of docker
+
+before_install: #what needs to be done before project run
+  - docker build -t phuaweijie/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true phuaweijie/docker-react npm run test
